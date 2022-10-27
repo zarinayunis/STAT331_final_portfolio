@@ -1,0 +1,96 @@
+---
+title: "Lab 5"
+author: "Zarina Yunis"
+format: html
+execute: 
+  error: true
+  warning: false
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(here)
+library(forcats)
+```
+
+```{r}
+#| messages: false
+#| warnings: false
+
+surveys <- read_csv(here::here("supporting_artifacts", "surveys.csv"))
+surveys
+```
+
+1.  
+
+```{r}
+surveys |> 
+  mutate(species = fct_reorder(species, weight, .desc = TRUE))
+  ggplot(data = surveys,
+       mapping = aes(y = reorder(species, weight),
+                     x = weight,
+                     color = species)) +
+  geom_boxplot() + 
+    labs(title = "Reordering Species by weight", x = "Weight", y = "Species")
+```
+
+2.  
+
+```{r}
+surveys |> 
+  select(weight, genus, year) |> 
+  group_by(genus, year) |> 
+  summarize(weight = mean(weight)) |> 
+  ggplot(mapping = aes(y = weight, 
+                       x = year, 
+                       col = fct_reorder2(genus, year, weight, .desc = TRUE))) +
+  geom_line() +
+  labs(title = "Reordering Genus by Mean Weight", 
+       y = "Mean Weight", 
+       col = "Color by Genus")
+```
+
+3.  
+
+```{r}
+#| warning: false
+
+surveys |> 
+  select(day_of_week) |> 
+  count(day_of_week) |> 
+  ggplot(mapping = aes(x = fct_relevel(day_of_week, c("Monday", "Tuesday",
+                                                    "Wednesday", "Thursday",
+                                                    "Friday", 
+                                                    "Saturday", "Sunday")),
+                       y = n, 
+                       fill = day_of_week)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Day of Week", 
+       y = "Number of Rodents", 
+       title = "Number of Rodents Captured Each Weekday",
+       fill = "Week Day")
+```
+
+```{r}
+#| warning: false
+
+surveys |> 
+  select(day_of_week) |> 
+  count(day_of_week) |> 
+  ggplot(mapping = aes(x = fct_collapse(day_of_week, 
+                                        weekday = c("Mon", "Tue",
+                                                "Wed", "Thu",
+                                                "Fri"),
+                                    weekend = c("Sat", "Sun")),
+                       y = n,
+                       fill = day_of_week)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Day of Week", 
+       y = "Number of Rodents", 
+       title = "Number of Rodents Captured Each Weekday",
+       fill = "Week Day")
+```
