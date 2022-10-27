@@ -1,0 +1,133 @@
+---
+title: "Lab 3: Hip Hop Lyrics"
+author: "Zarina Yunis"
+format: html
+execute:
+  warning: false
+  error: true
+editor: visual
+---
+
+```{r}
+#| messages: false
+#| warnings: false
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+#| echo: false
+
+hiphop <- read_csv(here::here("supporting_artifacts", "hiphop.csv"))
+```
+
+1.  This data set sampled 168 subjects to determine their overall familiarity with common terms in African American English. It collects data on each participant's demographics, for instance their sex, age, ethnicity, nationality, and more. In addition, the participants are surveyed on how well they know African American English terms, which is a score rated from 1-5. Information is also gathered on what type of music they listen to, how familiar they are with white and black pop culture, and what artists they listen to.
+
+2.  The rows of this data set are one word that a participant is tested on the familiarity of.
+
+3.  These missing variables were replaced with zeroes and mean values. One drawback of this is that 0 is a valid value for multiple variables in the data set, so it might be difficult to tell which zeroes are legitimate and which zeroes are not. However, a benefit would be that the zeroes do not interfere with the calculation of summary statistics for each variable. Mean values were reported specifically for the number of strong ties people had to African Americans. One drawback to coding missing values in this way is that it does not entirely make sense, as "number of ties" is something that should be expressed as a whole number (you cannot have half a tie!). On the other hand, similar to using zeroes, a benefit for mean values is that they also do not interfere with the calculation of summary statistics.
+
+4.  
+
+    ```{r}
+    hiphop_clean <- hiphop |> 
+      mutate(
+        sex = as.factor(sex),
+        across(c('jayz1', 'boondocks', 'fam1'), as.logical))
+    ```
+
+5.  There are 64 different words in this data set.
+
+    ```{r}
+    hiphop_clean |> 
+      distinct(word) |> 
+      nrow()
+    ```
+
+6.  
+
+    ```{r}
+    hiphop_clean <- hiphop_clean |> 
+      mutate(
+        ethnic_updated = as.factor(if_else(ethnic == 'white', 'white', 'non-white'))
+      )
+    ```
+
+7.  
+
+    ```{r}
+    hiphop_clean <- hiphop_clean |> 
+      select(sex, age, ethnic_updated) |> 
+      distinct(sex, age, ethnic_updated) |>
+      summary()
+    hiphop_clean
+    ```
+
+    Out of all the participants, it appears that there are 28 women and 19 men in the study. They have an average age of about 23 years.
+
+8.  
+
+    ```{r}
+    hiphop |> 
+      distinct(age, keep.all = TRUE) |> 
+      ggplot(mapping = aes(x = age)) +
+          geom_histogram(binwidth = 5) +
+      labs(x = 'Age of Respondent')
+    hiphop |> 
+      distinct(sex, keep.all = TRUE) |> 
+      ggplot(mapping = aes(x = sex)) +
+          geom_bar(stat = 'count', alpha = 0.5) +
+      labs(x = "Respondent's Sex", 
+           y = "Number of Respondents")
+      
+    ```
+
+# Familiar Words
+
+```{r}
+less_than_20 <- hiphop |> 
+  filter(age < 20) |> 
+  select(word, familiarity) |> 
+  group_by(word) |> 
+  summarize(familiarity = mean(familiarity))
+less_than_20 |>  
+  slice_min(familiarity)
+less_than_20 |> 
+  slice_max(familiarity)
+
+non_white_females <- hiphop |> 
+  filter(sex == "Female", 
+         ethnic != "white") |> 
+  select(word, familiarity) |> 
+  group_by(word) |> 
+  summarize(familiarity = mean(familiarity))
+non_white_females |> 
+  slice_min(familiarity)
+non_white_females |> 
+  slice_max(familiarity)
+
+white_men_over_30 <- hiphop |> 
+  filter(sex == "Male", 
+         ethnic == "white", 
+         age > 30) |> 
+  select(word, familiarity) |> 
+  group_by(word) |> 
+  summarize(familiarity = mean(familiarity))
+white_men_over_30 |> 
+  slice_min(familiarity)
+white_men_over_30 |> 
+  slice_max(familiarity)
+```
+
+# Study Subjects
+
+```{r}
+hiphop |> 
+  filter(city %in% (10000:60000),
+         age %in% (17:23),
+         sex == "Male",
+         bieber == 5) |> 
+  select(subj) |> 
+  distinct(subj)
+```
