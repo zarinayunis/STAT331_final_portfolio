@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zarina Yunis">
+
+<title>Week 6 Reflection</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Week 6 Reflection_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Week 6 Reflection_files/libs/quarto-html/quarto.js"></script>
+<script src="Week 6 Reflection_files/libs/quarto-html/popper.min.js"></script>
+<script src="Week 6 Reflection_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Week 6 Reflection_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Week 6 Reflection_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Week 6 Reflection_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Week 6 Reflection_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Week 6 Reflection_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Week 6 Reflection_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 6 Reflection</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zarina Yunis </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="week-6-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="week-6-reflection">Week 6 Reflection</h2>
+<p>Since I last reflected on my growth in this class, I believe that I have continuously made improvements, despite initial struggle and frustration. Over the past three weeks, I have improved significantly in using R. Setting up my documents has become a lot quicker and I have become a lot more confident in applying concepts I learned in class to future labs. Three of my labs in particular, labs 2, 3, and 5, exhibit my growth in this class.</p>
+<p>While I initially had trouble mastering this concept, over the course of several labs and revisions I have demonstrated proficiency in learning target <strong>DVS-5</strong>, which states: <strong>“</strong>I can find summaries of variables across multiple groups.” Question 4 of Lab 3 exemplifies this learning target, as it requires the coder to change certain columns in the data set into logical vectors. Initially, I used the correct functions, however I changed each column, ‘jayz1’, ‘boondocks’, and ‘fam1’, into logical vectors individually when in reality there was a more efficient way to do so. In my revisions, I edited this question by putting a vector of these three columns into the across function and then specifying that I wanted to apply the as.logical function to these three columns. After wrestling with this concept, I can now identify where a function can be applied to multiple columns and I am now aware of the appropriate tools to do so. I also exhibited proficiency in learning target <strong>DVS-4</strong>, which states: “I can calculate numerical summaries of variables.” This learning target was another one that I initially had trouble with. However, the “Familiar Words” section of lab 3 exemplifies my improvement in summarizing variables, as I learned not only how to summarize a data frame, but also how to take the minimum and maximum values of that summarized data frame. At first, I had tried to pipe the slice_min and slice_max functions inside of my summarized data frames for familiarity scores of different demographics. However, I ended up getting no values for slice_max. I fixed this by creating data frames of mean familiarity scores for each word in each demographic and then individually piped the slice_min and slice_max functions into each data frame to find what words in the hiphop data set had the highest and lowest familiarity scores.</p>
+<p>Over my 6 weeks in this class, I have also demonstrated proficiency with overall use of the R Studio program, including loading in packages and setting up my quarto documents. In lab 2, I learned how to load in the tidyverse and here packages and use their respective functions. At the top of the document, I used the library function to load in both tidyverse and here. In my next chunk of code, I used the read_csv function from the here package to locate and load in my csv document. This part of the lab met both learning targets “<strong>R-1:</strong> I can create a professional looking, reproducible analysis using RStudio projects, Quarto documents, and the here package” and “<strong>R-3:</strong> I can write robust programs that are resistant to changes in inputs.” The line “read_csv(here::here(”supporting_artifacts”, “surveys.csv”))” specifically meets <strong>R-3</strong> because it finds the nearest R project and locates the file in one of its folders. It can easily be changed by replacing the inputs of the function with another person’s file folders and file names, as the core of the code itself does not need to be changed. The tasks assigned to me in lab 2 also highlighted <strong>DVS-1</strong>, which states:“I can create visualizations for a variety of variable types.” Questions 5, 6, 7, and 8 reveal the goals of this target, as in 5, 6, and 7 I created and modified a scatterplot that demonstrated the relationship between species weight and hindfoot length. In addition to plotting the data, I was also able to alter the color of the points in the scatterplot as well as the transparency of the points and the labels of the plot.</p>
+<p>In addition to creating visualizations to accompany my numerical summaries, I learned how to modify those visualizations to better depict a certain narrative. In Lab 5, we were introduced to the forcats package, which came with multiple functions for reordering and releveling variables in plots. My work in lab 5 specifically met <strong>DVS-2</strong>, which states: “I use plot modifications to make my visualization clear to the reader.” Particularly in question 1 of lab 5, I used the fct_reorder function to rearrange the boxplots of specie weights in the surveys.csv file by descending order so the viewer could tell which species had higher weights on average and which ones had lower weights on average. Before using this function, the reader would have to do a lot more work to determine that information. Lab 5 also met <strong>DVS-3</strong>, which states: “I show creativity in my visualizations.” In question 3, I was asked to plot the number of rodents captured each day of the week, but instead by collapsing my bar plot columns into a “weekday” column and a “weekend” column. To accomplish this, I used the fct_collapse function to assign vectors of both the week days and weekend days into two separate columns. Rather than just plotting the data with the default setting, this lab and learning target demonstrated my ability to use more advanced techniques and also ponder the multiple ways I could represent the data.</p>
+<p>Throughout these past three weeks, I have continued to review the course materials and seek out supplemental information online for concepts that I still did not understand. I took advantage of YouTube videos from both Dr.&nbsp;Theobold and other authors to explain concepts in further detail, as well as helpful websites made available to the public. I am also thankful for my peers in my STAT 331 class, whom I consult when I am having trouble on an assignment. We attempt each problem, but we come to each other if we encounter a block. I also take advantage of the class discord to learn from my other peers in the STAT 331 class. I have multiple outlets to turn to for help when I need it, which has significantly helped me with the coursework.</p>
+<p>In class, I am the only undergrad student in a group full of grad students. This was initially intimidating for me because I figured they were all more experienced than me and I thought I would fall behind quickly. However, they were incredibly nice people, and over time I realized that we were all new to this coding language. I would approach them for help, and at times they would come to me. Whenever one of my peers needed help, I became better at articulating concepts in ways that were easy for them to understand. We are all kind to each other and patient with one another, and I have never felt judged in any way for not understanding material right away.</p>
+<p>While STAT 331 continues to be a difficult course for me, I have accomplished several of my academic goals already. I spend sufficient time outside of class furthering my understanding of the material, and with each assignment, I become quicker at accomplishing the tasks I learn. When I am requested to make revisions, I take them seriously, and I ask lots of questions to learn from my peers and Dr.&nbsp;Theobold. While I still have a lot of growth, I feel like I have already made a lot of progress in the past three weeks. I would still give myself an A- in the class for my effort and understanding of the material, while I still feel that I have room for improvement on some of the concepts. I believe that I have developed a proficient understanding of most of the learning targets, and I have demonstrated commitment to mastering them even when I struggle. While my knowledge of some of the concepts still is not perfect, I am becoming a lot more efficient and quicker in understanding the new material I have taught. I believe I have come a long way from the beginning of the quarter.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
