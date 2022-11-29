@@ -2,10 +2,13 @@
 title: "Lab 2 Portfolio"
 author: "Zarina Yunis"
 format: html
+execute: 
+  error: true
+  warning: false
 editor: visual
 ---
 
-##  Lab Instructions
+## Lab Instructions
 
 The questions in this lab are noted with numbers and boldface. Each question will require you produce code, whether it is one line or multiple lines.
 
