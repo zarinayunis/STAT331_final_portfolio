@@ -15,6 +15,10 @@ library(english)
 ```
 
 ```{r}
+xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
+```
+
+```{r}
 # Function that takes a noun and makes it plural
 # Arguments -- gift -- A string or vector of strings
 # Return -- A string or vector of strings with the pluralized words
