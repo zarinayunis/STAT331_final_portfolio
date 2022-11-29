@@ -3,3 +3,13 @@ title: "Lightening Round Essays"
 format: html
 editor: visual
 ---
+
+If Hannah Pawig doesn't earn an A, then nobody should, because she is always working hard and seems to grasp an understanding of concepts very quickly and is even responsive to others who ask her for help.
+
+Filtering and mutating joins during Week 4 was particularly difficult for me, because it took me some time getting used to a new way of filtering and joining datasets than we were used to.
+
+The easiest part of the class was using the forcats package during week 5, as I caught onto the directions relatively quickly.
+
+The tasks we did with iteration in Lab 8 interested me the most because we learned about many useful functions from new packages and it was interesting to see how it could be applied to piecing together a song we already knew.
+
+Take advantage of the discord and get to know a few people in the class that you can bounce ideas off of because many brains together will be more efficient in completing the tasks of the class.
