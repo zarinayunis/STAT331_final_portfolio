@@ -19,7 +19,7 @@ library(here)
 ```{r}
 #| messages: false
 
-avocadoes <- read_csv(here::here("Week 4", "avocado.csv"))
+avocadoes <- read_csv(here::here("supporting_artifacts", "avocado.csv"))
 ```
 
 1.  This data set includes the avocado prices and average number of avocados sold in different regions and different years. They are grouped into small, large, and extra large hass avocados. This data came from the Hass Avocado Board website in 2018. In this data set, the average prices of a single avocado and the total volume of each avocado size sold are also included. The regions, years, dates, and types of avocados are also present in the data set.
