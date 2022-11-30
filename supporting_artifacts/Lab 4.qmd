@@ -1,0 +1,141 @@
+---
+title: "Lab 4"
+author: "Zarina Yunis"
+format: html
+execute: 
+  warning: false
+  error: false
+editor: visual
+---
+
+```{r}
+#| messages: false
+#| warnings: false
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+#| messages: false
+
+avocadoes <- read_csv(here::here("Week 4", "avocado.csv"))
+```
+
+1.  This data set includes the avocado prices and average number of avocados sold in different regions and different years. They are grouped into small, large, and extra large hass avocados. This data came from the Hass Avocado Board website in 2018. In this data set, the average prices of a single avocado and the total volume of each avocado size sold are also included. The regions, years, dates, and types of avocados are also present in the data set.
+2.  
+
+```{r}
+#| warning: false
+
+regions <- avocadoes |>
+  filter(region %in% c("GreatLakes", "Northeast", "Plains", "SouthCentral", "Southeast", "West"))
+regions_updated <- avocadoes |> 
+  semi_join(regions, avocadoes, by = "region")
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+unwanted <- avocadoes |> 
+  filter(region %in% c("California", "TotalUS"))
+metro <- avocadoes |> 
+  anti_join(regions_updated) |> 
+  anti_join(unwanted) |> 
+  rename("small.avocados" = `4046`,
+         "large.avocados" = `4225`,
+         "xl.avocados" = `4770`)
+```
+
+3.  The West sold the most organic, small Hass avocados in 2017.
+
+```{r}
+regions_updated |>
+  filter(year == 2017, type == "organic") |>
+  select(region, "4046")|> 
+  group_by(region) |> 
+  summarize(mean = mean(`4046`)) |> 
+  slice_max(mean)
+  
+```
+
+4.  Februrary had the highest volume of avocado sales.
+
+```{r}
+avocadoes |> 
+  separate(col = Date, into = c("month", "day", "year"), sep = "/") |>
+  select(month, `Total Volume`) |> 
+  group_by(month) |> 
+  summarize(`Total Volume` = sum(`Total Volume`)) |> 
+  slice_max(order_by = `Total Volume`)
+```
+
+5.  The five metropolitan regions that sold the most avocados were Midsouth, Los Angeles, New York, Dallas Fort Worth, and Houston.
+
+```{r}
+#| warning: false
+
+metro |> 
+  select(region, `Total Volume`) |> 
+  group_by(region) |> 
+  summarize(`Total Volume` = sum(`Total Volume`)) |> 
+  slice_max(order_by = `Total Volume`, n = 5)
+ca_regions <- avocadoes |>
+  filter(region == c("California", "LosAngeles", "NewYork", "Denver", 
+                     "Seattle"))
+metro_ca <- avocadoes |> 
+  semi_join(ca_regions, avocadoes, by = "region")
+metro_ca |> 
+  ggplot(mapping = aes(x = region,
+                       y = `Total Volume`,
+                       col = region)) + 
+  geom_boxplot(col = 'blue', alpha = 0.5) + 
+  labs(x = "metro region", y = "Volume of Avocados Sold")
+```
+
+6.  San Francisco had the biggest difference between organic vs. conventional avocado sales.
+
+```{r}
+#| message: false
+
+ca_cities <- metro |> 
+  filter(region %in% c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
+summary <- metro |> 
+  semi_join(ca_cities, avocadoes, by = "region") |> 
+  select(region, type, AveragePrice) |> 
+  group_by(region, type) |> 
+  summarize(AveragePrice = mean(AveragePrice)) |> 
+  pivot_wider(names_from = type,
+              values_from = AveragePrice) |> 
+  mutate(diff = abs(conventional - organic))
+summary
+summary |> 
+  ggplot(mapping = aes(x = region, 
+                       y = diff,
+                       fill = region)) +
+  geom_bar(stat = 'identity')
+```
+
+7.  
+
+```{r}
+#| messages: false
+
+california_avocados <- metro |> 
+  filter(region %in% c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
+california_avocados_props <- california_avocados |> 
+  select(`Total Volume`, small.avocados, large.avocados, xl.avocados, type, region) |>
+  pivot_longer(cols = small.avocados:xl.avocados,
+               names_to = "proportion_category",
+               values_to = "proportions") |> 
+  group_by(region, proportion_category, type) |> 
+  mutate(proportion = proportions / `Total Volume`) |> 
+  distinct(region, .keep_all = TRUE)
+california_avocados_props |> 
+  ggplot(mapping = aes(x = region, 
+                       y = proportion, 
+                       fill = proportion_category)) +
+  geom_col(position = "fill") +
+  facet_wrap(~type)
+```

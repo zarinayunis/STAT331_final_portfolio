@@ -1,0 +1,135 @@
+---
+title: "Challenge 4"
+author: "Zarina Yunis"
+format: html
+execute:
+  error: true
+  message: false
+  warning: false
+editor: visual
+---
+
+```{r}
+#| messages: false
+#| warnings: false
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+#| messages: false
+
+avocadoes <- read_csv(here::here("Week 4", "avocado.csv"))
+```
+
+```{r}
+#| warning: false
+
+regions <- avocadoes |>
+  filter(region %in% c("GreatLakes", "Northeast", "Plains", "SouthCentral", "Southeast", "West"))
+regions_updated <- avocadoes |> 
+  semi_join(regions, avocadoes, by = "region")
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+unwanted <- avocadoes |> 
+  filter(region %in% c("California", "TotalUS"))
+metro <- avocadoes |> 
+  anti_join(regions_updated) |> 
+  anti_join(unwanted) |> 
+  rename("small.avocados" = `4046`,
+         "large.avocados" = `4225`,
+         "xl.avocados" = `4770`)
+```
+
+```{r}
+
+regions_updated |>
+  filter(year == 2017, type == "organic") |>
+  select(region, "4046")|> 
+  group_by(region) |> 
+  summarize(mean = mean(`4046`)) |> 
+  slice_max(mean)
+```
+
+```{r}
+avocadoes |> 
+  separate(col = Date, into = c("month", "day", "year"), sep = "/") |>
+  select(month, `Total Volume`) |> 
+  group_by(month) |> 
+  summarize(`Total Volume` = sum(`Total Volume`)) |> 
+  slice_max(order_by = `Total Volume`)
+```
+
+```{r}
+#| warning: false
+
+metro |> 
+  select(region, `Total Volume`) |> 
+  group_by(region) |> 
+  summarize(`Total Volume` = sum(`Total Volume`)) |> 
+  slice_max(order_by = `Total Volume`, n = 5)
+ca_regions <- avocadoes |>
+  filter(region == c("California", "LosAngeles", "NewYork", "Denver", 
+                     "Seattle"))
+metro_ca <- avocadoes |> 
+  semi_join(ca_regions, avocadoes, by = "region")
+metro_ca |> 
+  ggplot(mapping = aes(x = region,
+                       y = `Total Volume`,
+                       col = region)) + 
+  geom_boxplot(col = 'blue', alpha = 0.5) + 
+  labs(x = "metro region", y = "Volume of Avocados Sold")
+```
+
+```{r}
+#| message: false
+
+ca_cities <- metro |> 
+  filter(region %in% c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
+summary <- metro |> 
+  semi_join(ca_cities, avocadoes, by = "region") |> 
+  select(region, type, AveragePrice) |> 
+  group_by(region, type) |> 
+  summarize(AveragePrice = mean(AveragePrice)) |> 
+  pivot_wider(names_from = type,
+              values_from = AveragePrice) |> 
+  mutate(diff = abs(conventional - organic))
+summary
+summary |> 
+  ggplot(mapping = aes(x = region, 
+                       y = diff,
+                       fill = region)) +
+  geom_bar(stat = 'identity')
+```
+
+```{r}
+#| messages: false
+
+california_avocados <- metro |> 
+  filter(region %in% c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
+california_avocados_props <- california_avocados |> 
+  select(`Total Volume`, small.avocados, large.avocados, xl.avocados, type, region) |>
+  pivot_longer(cols = small.avocados:xl.avocados,
+               names_to = "proportion_category",
+               values_to = "proportions") |> 
+  group_by(region, proportion_category, type) |> 
+  mutate(proportion = proportions / `Total Volume`) |> 
+  distinct(region, .keep_all = TRUE)
+california_avocados_props |> 
+  ggplot(mapping = aes(x = region, 
+                       y = proportion, 
+                       fill = proportion_category)) +
+  geom_col(position = "fill") +
+  facet_wrap(~type)
+```
+
+## Challenge 4
+
+```{r}
+
+```
