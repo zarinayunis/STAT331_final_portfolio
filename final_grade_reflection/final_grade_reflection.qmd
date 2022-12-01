@@ -10,3 +10,21 @@ In this document, you make a data-based argument for the grade you've earned in 
 ## The output document should be a PDF or a Word Document, as it should be a **maximum** of 2-pages.
 
 I earned an A- in STAT 331.
+
+**WD-1:** Lab 2 Question 1, Practice Activity 4, Question 1
+**WD-2:** Lab 3, Question 7
+**WD-3:** Lab 3, Question 9 (Familiar Words)
+**WD-4:** Lab 3 Question 4, Lab 4 Question 7
+**WD-5:** Preview Activity: Reshaping and Joining Data, Questions 2 and 3
+**WD-6:** Lab 4, Question 2
+**WD-7:** Lab 4 Question 6, Lab 4 Question 7
+
+**R-1:** Lab 2, YAML and Set Up
+**R-2:** Lab 3, Question 4
+**R-3:**
+
+**DVS-1:** Lab 2, Question 5
+**DVS-2:** Lab 2, Question 6
+**DVS-3:** Lab 2, Question 7
+**DVS-4:** Lab 3, Question 7
+**DVS-5:** Lab 3, Question 4
