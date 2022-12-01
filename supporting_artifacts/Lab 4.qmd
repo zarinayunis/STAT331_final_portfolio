@@ -18,6 +18,8 @@ library(tidyverse)
 library(here)
 ```
 
+*This is an additional revision done for the portfolio*
+
 ```{r}
 #| messages: false
 
