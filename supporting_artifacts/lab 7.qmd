@@ -1,0 +1,103 @@
+---
+title: "Lab 7"
+author: "Zarina Yunis"
+format: html
+execute:
+  error: true
+  warning: false
+editor: visual
+---
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(here)
+library(forcats)
+library(patchwork)
+```
+
+```{r}
+#| message: false
+#| warning: false
+
+fish <- read_csv(here::here("supporting_artifacts", "BlackfootFish.csv"))
+```
+
+## Part 1
+
+1.  
+
+```{r}
+fish |>
+  summarize(across(.cols = everything(),
+         .fns = ~sum(is.na(.)))) |> 
+  mutate(total_sum = rowSums(across(where(is.numeric))))
+```
+
+1796 observations have missing values present and 1 variable has missing values present.
+
+2.  
+
+```{r}
+missing <- fish |>
+  filter(is.na(weight)) |> 
+  group_by(year, trip, section)
+years <- missing |> 
+  mutate(trip = as.character(trip),
+         trip = fct_recode(trip, `Trip 1` = "1", `Trip 2` = "2")) |> 
+  ggplot(mapping = aes(x = year,
+                       fill = section)) +
+  geom_bar() +
+  facet_wrap(~trip) +
+  labs(title = "Frequency of Missing Values") +
+  theme(axis.text.y = element_blank())
+years
+```
+
+## Part 2
+
+3.  
+
+```{r}
+rescale_01 <- function(x){
+  stopifnot(is.numeric(x) | length(x) <= 1)
+  
+  my_max = max(x, na.rm = TRUE)
+  my_min = min(x, na.rm = TRUE)
+  range = my_max - my_min
+  rescale = (x - my_min)/range
+  return(rescale)
+}
+
+x <- c(1:25, NA)
+rescale_01(x)
+
+original <- fish |> 
+  ggplot(mapping = aes(x = length)) +
+  geom_boxplot() +
+  labs(x = "Length of Fish (original)")
+rescale <- fish |> 
+  ggplot(mapping = aes(x = rescale_01(length))) +
+  geom_boxplot() +
+  labs(x = "Length of Fish (rescaled)")
+original + rescale
+```
+
+4.  
+
+```{r}
+rescale_column <- function(df, variables){
+  stopifnot(is.data.frame(df))
+  new_df <- df |> 
+    mutate(
+      across(
+        .cols = {{variables}},
+        .fns = rescale_01)
+    )
+  return(new_df)
+}
+
+rescale_column(fish, length:weight)
+```
