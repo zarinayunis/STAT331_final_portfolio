@@ -83,7 +83,7 @@ female_allisons |>
                        y = Count)) +
   geom_point(position = "jitter") +
   stat_smooth(method = "lm")
-kable(head(female_allisons), 
+kable((female_allisons), 
       'html', 
       col.names = c("Year", "Count"),
       align = "c",
@@ -149,6 +149,8 @@ kable(allan_ca_and_pa,
       align = "c",
       caption = "Number of Allen/lan/llans Born Per Year Per State")
 ```
+
+11. 
 
 ```{r}
 percentages <- allan_ca_and_pa |> 
