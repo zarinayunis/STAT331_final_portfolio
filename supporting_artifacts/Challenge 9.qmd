@@ -1,0 +1,144 @@
+---
+title: "Challenge 9"
+author: "Zarina Yunis"
+format: 
+  html:
+    self-contained: true
+execute: 
+  error: true
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(DT)
+```
+
+```{r}
+#| echo: false
+#| warning: false
+
+a_names <- read_csv(here::here("supporting_artifacts", "StateNames_A.csv"))
+datatable(head(a_names, n = 10), class = 'cell-border stripe')
+```
+
+```{r}
+a_names <- a_names |> 
+  rename("Sex" = "Gender")
+```
+
+## Summarizing and Visualizing the Numbers of Allisons
+
+```{r}
+summary_table <- a_names |> 
+  filter(Name == "Allison") |> 
+  group_by(State, Sex) |> 
+  summarize(Count = sum(Count)) |> 
+  pivot_wider(names_from = Sex, values_from = Count) |> 
+  mutate(across(c("F", "M"), ~replace_na(., 0))) |> 
+  filter(!"M" == 0)
+kable(head(summary_table), 
+      'html', 
+      col.names = c("State", "F", "M"),
+      align = "c",
+      caption = "Distribution of Female and Male Allisons by State")
+  
+```
+
+```{r}
+female_allisons <- a_names |> 
+  filter(Name == "Allison",
+         Sex == "F") |> 
+  group_by(Year) |> 
+  summarize(Count = sum(Count))
+
+```
+
+```{r}
+female_allisons |> 
+  ggplot(mapping = aes(x = Year,
+                       y = Count)) +
+  geom_col(fill = "purple") +
+  labs(y = "Number of Allisons")
+```
+
+## Modeling the Number of Allisons
+
+```{r}
+female_allisons |> 
+  ggplot(mapping = aes(x = Year,
+                       y = Count)) +
+  geom_point(position = "jitter") +
+  stat_smooth(method = "lm")
+kable(head(female_allisons), 
+      'html', 
+      col.names = c("Year", "Count"),
+      align = "c",
+      caption = "Number of Allisons Born Per Year")
+```
+
+```{r}
+allisons_lm <- female_allisons |> 
+  lm(Count ~ Year, data = _)
+allisons_lm
+```
+
+```{r}
+allisons_lm |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid, x = .fitted)) +
+  geom_point()
+```
+
+## Spelling by State
+
+```{r}
+allan <- a_names |> 
+  filter(Name %in% c("Allan", "Alan", "Allen"))
+kable(head(allan), 
+      "html", 
+      col.names = c("Name", "Year", "Sex", "State", "Count"),
+      align = "c",
+      caption = "Number of Allen/lan/llans Born Per Year Per State")
+```
+
+```{r}
+allan |> 
+  ggplot(mapping = aes(x = Year,
+                       y = Count,
+                       fill = Name)) +
+  geom_col() +
+  facet_wrap(~ Name)
+```
+
+```{r}
+allan_ca_and_pa <- allan |> 
+  filter(State %in% c("CA", "PA"), 
+         Year == 2000,
+         Sex == "M") |>  
+  pivot_wider(names_from = Name,
+              values_from = Count) |>
+  select(State:Allan) |> 
+  mutate(across(c("Alan":"Allan"), ~replace_na(., 0)))
+kable(allan_ca_and_pa, 
+      "html", 
+      col.names = c("State", "Alan", "Allen", "Allan"),
+      align = "c",
+      caption = "Number of Allen/lan/llans Born Per Year Per State")
+```
+
+```{r}
+percentages <- allan_ca_and_pa |> 
+  mutate(Total = rowSums(across(.cols = c("Alan", "Allen", "Allan"))),
+         Alan = round((Alan / Total) * 100, 2),
+         Allen = round((Allen / Total) * 100, 2),
+         Allan = round((Allan / Total) * 100, 2)) |> 
+  select(State:Allan)
+datatable(allan_ca_and_pa, 
+          class = "cell-border stripe",
+          editable = "cell",
+          caption = "Breakdown of the name 'Allen/an' per State")
+```
