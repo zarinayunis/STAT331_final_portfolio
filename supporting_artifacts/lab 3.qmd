@@ -1,7 +1,9 @@
 ---
 title: "Lab 3: Hip Hop Lyrics"
 author: "Zarina Yunis"
-format: html
+format: 
+  html:
+    self-contained: true
 execute:
   warning: false
   error: true

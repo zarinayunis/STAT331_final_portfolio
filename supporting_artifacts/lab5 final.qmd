@@ -1,7 +1,9 @@
 ---
 title: "Lab 5"
 author: "Zarina Yunis"
-format: html
+format: 
+  html:
+    self-contained: true
 execute: 
   error: true
   warning: false
