@@ -1,7 +1,9 @@
 ---
 title: "Practice Activity 4"
 author: "Zarina Yunis"
-format: html
+format: 
+  html:
+    self-contained: true
 execute:
   warning: false
   error: false
