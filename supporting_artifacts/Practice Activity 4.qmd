@@ -1,0 +1,78 @@
+---
+title: "Practice Activity 4"
+author: "Zarina Yunis"
+format: html
+execute:
+  warning: false
+  error: false
+editor: visual
+---
+
+```{r}
+#| messages: false
+#| warnings: false
+
+library(readxl)
+library(tidyverse)
+library(here)
+
+military <- read_xlsx(here::here("supporting_artifacts", "gov_spending_per_capita.xlsx"),
+                      sheet = "Share of Govt. spending",
+                      skip = 7,
+                      n_max = 198)
+```
+
+2.  
+
+```{r}
+
+military_clean <- military |> 
+  mutate(across(.cols = everything(), .fns = ~na_if(., ". .")),
+        across(.cols = everything(), .fns = ~na_if(., "xxx")))
+```
+
+3.  
+
+```{r}
+
+military_clean <- military_clean |> 
+  mutate(across(.cols = "1988":"2019", .fns = ~as.numeric(.)))
+```
+
+4.  
+
+```{r}
+
+cont_region <- read_xlsx(here::here("supporting_artifacts",
+                                    "gov_spending_per_capita.xlsx"), 
+                      sheet = "Regional totals", 
+                      skip = 14) |> 
+  filter(Region != "World total (including Iraq)", 
+         Region != "World total (excluding Iraq)")
+military_clean |> 
+  anti_join(cont_region, by = c("Country" = "Region")) |> 
+  arrange(Country)
+```
+
+# Data Organization
+
+```{r}
+military_longer <- military_clean |> 
+  pivot_longer("1988":"2018", 
+               names_to = "Year",
+               values_to = "Spending")
+```
+
+# Data Visualization Explanation
+
+```{r}
+military_longer |> 
+  ggplot(mapping = aes(x = Spending, y = Year)) +
+           geom_boxplot(alpha = 0.5)
+            
+```
+
+```{r}
+order <- military_longer |> 
+  arrange(Spending)
+```
