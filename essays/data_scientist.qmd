@@ -3,3 +3,5 @@ title: "My Growth as a Data Scientist"
 format: html
 editor: visual
 ---
+
+Over the course of my time in STAT 331, I have grown as a data scientist significantly. Of my time in college, this is the first course I have taken that has exposed me to the type of work I would be doing as a future data scientist. In particular, my skills in
