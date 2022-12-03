@@ -24,6 +24,8 @@ library(english)
 xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
 ```
 
+1.  
+
 ```{r}
 # Function that takes a noun and makes it plural
 # Arguments -- gift -- A string or vector of strings
@@ -46,6 +48,8 @@ return(gift)
 pluralize_gift(xmas$Gift.Item)
 ```
 
+2.  
+
 ```{r}
 ## This will work if your function is vectorized!
 pluralize_gift(xmas$Gift.Item)
@@ -53,6 +57,8 @@ pluralize_gift(xmas$Gift.Item)
 ## This will work if your function is not vectorized!
 purrr::map_chr(xmas$Gift.Item, pluralize_gift)
 ```
+
+3.  
 
 ```{r}
 make_phrase <- function(num_word, item, verb, adjective, location) {
@@ -77,6 +83,8 @@ make_phrase <- function(num_word, item, verb, adjective, location) {
 }
 ```
 
+4.  
+
 ```{r}
 xmas2 <- xmas |> 
   mutate(day.num = as.character(english::english(Day)
@@ -91,6 +99,8 @@ xmas2 <- xmas |>
       )
   )
 ```
+
+5.  
 
 ```{r}
 sing_day <- function(dataset, line, phrase_col){
@@ -116,6 +126,8 @@ sing_day <- function(dataset, line, phrase_col){
 }
 ```
 
+6.  
+
 ```{r}
 xmas2 |>
   sing_day(line = 2, phrase_col = Full.Phrase)
@@ -124,6 +136,8 @@ map_chr(1:12, ~ sing_day(xmas2, .x, Full.Phrase)) |>
   str_c(collapse = "\n") |>
   cat()
 ```
+
+7.  
 
 ```{r}
 xmas2 <- xmas |>
