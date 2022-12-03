@@ -19,7 +19,9 @@ library(knitr)
 library(DT)
 ```
 
-1.  
+1.  ***revised question***
+
+    -   **Added a datatable preview to the beginning of my document**
 
 ```{r}
 #| echo: false
@@ -152,7 +154,9 @@ kable(allan_ca_and_pa,
       caption = "Number of Allen/lan/llans Born Per Year Per State")
 ```
 
-11. 
+11. ***revised question***
+
+    -   **Included an output of my percentages table for the amount of Allan/lan/llen's per state**
 
 ```{r}
 percentages <- allan_ca_and_pa |> 
@@ -161,8 +165,8 @@ percentages <- allan_ca_and_pa |>
          Allen = round((Allen / Total) * 100, 2),
          Allan = round((Allan / Total) * 100, 2)) |> 
   select(State:Allan)
-datatable(allan_ca_and_pa, 
+datatable(percentages, 
           class = "cell-border stripe",
           editable = "cell",
-          caption = "Breakdown of the name 'Allen/an' per State")
+          caption = "Percentages of 'Allen/an' per State")
 ```

@@ -6,7 +6,15 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 
 ## Final Grade Reflection
 
+Final Grade Reflection
+
 ## Essay Responses
+
+My Growth as a Data Scientist
+
+The Power of Efficiency
+
+Lightning Round Essays
 
 ## Supporting Artifacts 
 
@@ -20,4 +28,10 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 
 ### Growth as a Team Member
 
-This is a line from RStudio.
+text_messages_1
+
+text_messages_2
+
+text_messages_3
+
+text_messages_4

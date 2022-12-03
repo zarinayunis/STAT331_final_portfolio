@@ -27,7 +27,8 @@ avocadoes <- read_csv(here::here("supporting_artifacts", "avocado.csv"))
 ```
 
 1.  This data set includes the avocado prices and average number of avocados sold in different regions and different years. They are grouped into small, large, and extra large hass avocados. This data came from the Hass Avocado Board website in 2018. In this data set, the average prices of a single avocado and the total volume of each avocado size sold are also included. The regions, years, dates, and types of avocados are also present in the data set.
-2.  
+2.  ***revised question***
+    -   **Deleted intermediate data sets, filtered regions that were in a vector of values, and produced new data sets using the appropriate filtering joins**
 
 ```{r}
 #| warning: false
@@ -98,7 +99,11 @@ metro_ca |>
   labs(x = "metro region", y = "Volume of Avocados Sold")
 ```
 
-6.  San Francisco had the biggest difference between organic vs. conventional avocado sales.
+6.  ***revised question***
+
+    -   **Created a new data set of metro regions by making a data frame of CA cities and using the appropriate filtering join to create my new data set, rather than using the "==" operator to obtain that data set**
+
+    San Francisco had the biggest difference between organic vs. conventional avocado sales.
 
 ```{r}
 #| message: false
