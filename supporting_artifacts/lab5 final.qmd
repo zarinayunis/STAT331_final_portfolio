@@ -93,6 +93,6 @@ surveys |>
   geom_bar(stat = "identity") +
   labs(x = "Day of Week", 
        y = "Number of Rodents", 
-       title = "Number of Rodents Captured Each Weekday",
+       title = "Number of Rodents Captured Each Day",
        fill = "Week Day")
 ```

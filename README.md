@@ -24,6 +24,16 @@ Lightning Round Essays
 
 #### Revising My Thinking
 
+Lab 4 Question 2
+
+Lab 4 Question 6
+
+Lab 7 Question 1
+
+Challenge 9 Question 1
+
+Challenge 9 Question 11
+
 #### Extending My Thinking
 
 ### Growth as a Team Member
