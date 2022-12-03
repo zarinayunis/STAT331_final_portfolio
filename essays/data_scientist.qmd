@@ -4,4 +4,6 @@ format: html
 editor: visual
 ---
 
-Over the course of my time in STAT 331, I have grown as a data scientist significantly. Of my time in college, this is the first course I have taken that has exposed me to the type of work I would be doing as a future data scientist. In particular, my skills in
+Over the course of my time in STAT 331, I have grown as a data scientist significantly. Of my time in college, this is the first course I have taken that has exposed me to the type of work I would be doing as a future data scientist. In particular, my skills in filtering data sets, making creative visualizations of my data, and creating more efficient code with functions have become stronger during my time in STAT 331.
+
+In the beginning of the class when I had learned basic functions for cleaning and editing a data set, my skills for filtering data were very limited. I only knew how to filter rows with specific characteristics using the filter function, however I did not understand the complexity of filtering on a vector of values before completing and editing Lab 4. However, upon completing my edits, I learned how to effectively use filtering joins to include and exclude the information
