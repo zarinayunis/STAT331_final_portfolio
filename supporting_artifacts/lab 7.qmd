@@ -61,6 +61,7 @@ years
 3.  
 
 ```{r}
+# Function that takes in a vector as its argument and returns that same vector rescaled by subtracting each value by the minimum and dividing by the range of values in the vector
 rescale_01 <- function(x){
   stopifnot(is.numeric(x) | length(x) <= 1)
   
@@ -88,6 +89,7 @@ original + rescale
 4.  
 
 ```{r}
+# applies the rescale function created in the previous question to specified variables. The function takes in a dataframe and column names meant to be rescaled
 rescale_column <- function(df, variables){
   stopifnot(is.data.frame(df))
   new_df <- df |> 

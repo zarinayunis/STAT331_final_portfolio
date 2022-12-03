@@ -27,7 +27,7 @@ I earned an A- in STAT 331.
 
 **R-1:** Lab 2, YAML and Set Up
 
-**R-2:** Lab 3, Question 4
+**R-2:** Lab 7, Question 4
 
 **R-3:** Lab 4 Question 3,Lab 7 Question 4
 
@@ -45,8 +45,14 @@ I earned an A- in STAT 331.
 
 **DVS-7:** Challenge 9, Question 11 (refer to the numbers on my document)
 
-**PE-1:**
+**PE-1:** Lab 7, Question 1
 
 **PE-2:** Lab 7, Question 3
 
-PE-3:
+**PE-3:** Lab 8, Question 7 (refer to the numbers on my document)
+
+**PE-4:**
+
+**DSM-1:** Lab 9, Question 5 (Refer to Challenge 9 file)
+
+**DSM-2:** Lab 9, Questions 6 and 7 (Refer to Challenge 9 file)
