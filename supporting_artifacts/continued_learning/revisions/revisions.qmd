@@ -1,0 +1,36 @@
+---
+title: Portfolio Revisions"
+author: "Zarina Yunis"
+format: html
+execute: 
+  error: false
+editor: visual
+---
+
+### Lab 4 Question 2
+
+```{r}
+{r}
+#| warning: false
+
+regions <- avocadoes |>
+  filter(region %in% c("GreatLakes", "Northeast", "Plains", "SouthCentral", "Southeast", "West"))
+regions_updated <- avocadoes |> 
+  semi_join(regions, avocadoes, by = "region")
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+unwanted <- avocadoes |> 
+  filter(region %in% c("California", "TotalUS"))
+metro <- avocadoes |> 
+  anti_join(regions_updated) |> 
+  anti_join(unwanted) |> 
+  rename("small.avocados" = `4046`,
+         "large.avocados" = `4225`,
+         "xl.avocados" = `4770`)
+```
+
+I included this question in my revisions because Lab 4 and the concepts associated with it were ones I particularly struggled with. I had completed revisions for Lab 4 earlier in the quarter, however I realized that there were still a number of concepts that I wasn't understanding when I received my second round of revisions. Taking a second or third look at this question and these concepts made me realize the difference between filtering rows in a dataframe by a certain characteristic and filtering items in a vector. I realized that the point of semi and anti-join was to create a new data set and then filter the original data set by this new data set, either by including the items in the new data set or by excluding them.

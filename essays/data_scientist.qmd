@@ -1,6 +1,6 @@
 ---
 title: "My Growth as a Data Scientist"
-format: html
+format: pdf
 editor: visual
 ---
 
