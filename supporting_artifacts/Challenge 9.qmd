@@ -157,6 +157,7 @@ kable(allan_ca_and_pa,
 11. ***revised question***
 
     -   **Included an output of my percentages table for the amount of Allan/lan/llen's per state**
+    -   **Played around with the different arguments to make my new data table neat, organized, and easy to follow**
 
 ```{r}
 percentages <- allan_ca_and_pa |> 

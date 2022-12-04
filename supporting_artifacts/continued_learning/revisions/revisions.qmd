@@ -9,62 +9,16 @@ editor: visual
 
 ### Lab 4 Question 2
 
-```{r}
-{r}
-#| warning: false
-
-regions <- avocadoes |>
-  filter(region %in% c("GreatLakes", "Northeast", "Plains", "SouthCentral", "Southeast", "West"))
-regions_updated <- avocadoes |> 
-  semi_join(regions, avocadoes, by = "region")
-```
-
-```{r}
-#| warning: false
-#| message: false
-
-unwanted <- avocadoes |> 
-  filter(region %in% c("California", "TotalUS"))
-metro <- avocadoes |> 
-  anti_join(regions_updated) |> 
-  anti_join(unwanted) |> 
-  rename("small.avocados" = `4046`,
-         "large.avocados" = `4225`,
-         "xl.avocados" = `4770`)
-```
+![](images/Capture.JPG)
 
 **Lab 4 Question 6**
 
-```{r}
-#| message: false
-
-ca_cities <- metro |> 
-  filter(region %in% c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
-summary <- metro |> 
-  semi_join(ca_cities, avocadoes, by = "region") |> 
-  select(region, type, AveragePrice) |> 
-  group_by(region, type) |> 
-  summarize(AveragePrice = mean(AveragePrice)) |> 
-  pivot_wider(names_from = type,
-              values_from = AveragePrice) |> 
-  mutate(diff = abs(conventional - organic))
-summary
-summary |> 
-  ggplot(mapping = aes(x = region, 
-                       y = diff,
-                       fill = region)) +
-  geom_bar(stat = 'identity')
-```
+![](images/Capture%202.JPG)
 
 I included these questions in my revisions because Lab 4 and the concepts associated with it were ones I particularly struggled with. I had completed revisions for Lab 4 earlier in the quarter, however I realized that there were still a number of concepts that I wasn't understanding when I received my second round of revisions. Taking a second or third look at this question and these concepts made me realize the difference between filtering rows in a dataframe by a certain characteristic and filtering items in a vector. I realized that the point of semi and anti-join was to create a new data set and then filter the original data set by this new data set, either by including the items in the new data set or by excluding them. I was also creating a lot of intermediate data sets, which was inefficient and unnecessary. With this revision, I fixed all of those mistakes.
 
 ### Lab 7 Question 1
 
-```{r}
-fish |>
-  summarize(across(.cols = everything(),
-         .fns = ~sum(is.na(.)))) |> 
-  mutate(total_sum = rowSums(across(where(is.numeric))))
-```
+![](images/Capture%203.JPG)
 
 I included this question in my revisions because it was another one I was struggling with, even during my first round of revisions. I was having a little bit of trouble with what functions to use to obtain the some of N/A values for my dataset. However, upon some editing, I realized that I only needed to use two functions to answer the question, and I could find the sum of N/A values for all of the columns efficiently using the across function. I was initially trying to condense every column by taking the mean of N/A values, but I realized that step was not necessary.
