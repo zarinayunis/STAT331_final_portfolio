@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>My Growth as a Data Scientist</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="data_scientist_files/libs/clipboard/clipboard.min.js"></script>
+<script src="data_scientist_files/libs/quarto-html/quarto.js"></script>
+<script src="data_scientist_files/libs/quarto-html/popper.min.js"></script>
+<script src="data_scientist_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="data_scientist_files/libs/quarto-html/anchor.min.js"></script>
+<link href="data_scientist_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="data_scientist_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="data_scientist_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="data_scientist_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="data_scientist_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Growth as a Data Scientist</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Over the course of my time in STAT 331, I have grown as a data scientist significantly. Of my time in college, this is the first course I have taken that has exposed me to the type of work I would be doing as a future data scientist. In particular, my skills in filtering data sets have become stronger during my time in STAT 331.</p>
+<p>In the beginning of the class when I had learned basic functions for cleaning and editing a data set, my skills for filtering data were very limited. I only knew how to filter rows with specific characteristics using the filter function, however I did not understand the complexity of filtering on a vector of values before completing and editing Lab 4. However, upon completing my edits, I learned how to effectively use filtering joins on data sets to create new data sets based on certain criteria, and then join or exclude those new data sets with my original data set. These two functions provide a new way of filtering information in a data set when the information to include or exclude is found in a vector of values. Initially, I was also creating many intermediate data sets that I did not need to eventually obtain a new data set that filtered out only the information I wanted. By eliminating these data sets, I made my code a lot more concise and easy to follow for someone else who was reading it. Lab 4 Question 2 exhibits the changes I have made.</p>
+<p>In Lab 5, I learned to go above and beyond in making creative plots using my data using the forcats package. During the beginning of the course, I only knew the bare minimum of how to create visualizations for categorical and numerical data, and I did not take the time to explore the various arguments I could include to make my plots more creative and readable. On question 1 of Lab 5, I discovered how to reorder boxplots by a specific variable using the forcats reorder function. Rather than outputting all of my boxplots in a meaningless order, the reorder function allowed me to display the distribution of species weights in descending order, which displayed a better narrative to the viewer. I also utilized the fct_collapse function in question 3 of Lab 5 to create a segmented bar graph of the number of rodents captured each day, however the categories were collapsed into the categories of “weekday” or “weekend”. Using these new functions I learned to elevate my visualizations of data demonstrates how my skills as a data scientist have improved.</p>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
