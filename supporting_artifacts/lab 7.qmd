@@ -31,7 +31,7 @@ fish <- read_csv(here::here("supporting_artifacts", "BlackfootFish.csv"))
 
     -   **Reported the number of missing values per column by using the sum function across all of the columns and then taking the sum of each row**
 
-    -   **Deleted an extra mutate step that was unneccessary**
+    -   **Deleted an extra mutate step that was unnecessary**
 
 ```{r}
 fish |>

@@ -1,7 +1,7 @@
 ---
 title: "Final Grade Reflection"
 author: "Zarina Yunis"
-format: pdf
+format: docx
 editor: visual
 ---
 
@@ -55,4 +55,6 @@ I earned an A- in STAT 331.
 
 **DSM-2:** Lab 9, Questions 6 and 7 (Refer to Challenge 9 file)
 
-In addition to meeting a majority of the learning targets in my practice, lab, and challenge assignments, I have tried to help out other people in my class for the concepts I have mastered. I am an active participant in my group chat for my STAT 331 class group, as I ask my peers questions when I need help and I respond to their questions when they need help.
+In addition to meeting a majority of the learning targets in my practice, lab, and challenge assignments, I have tried to help out other people in my class for the concepts I have mastered. I am an active participant in my group chat for my STAT 331 class group, as I ask my peers questions when I need help and I respond to their questions when they need help. I am fortunate to have a supportive group of peers in my class, as we bounce ideas off of each other and have helped each other grow as data scientists.
+
+While STAT 331 continues to be a difficult course for me, I have accomplished several of my academic goals already. I continue to look for outside resources to help when concepts do not make sense to me. I have responded to most of my requested revisions in a timely manner, and I take my revisions seriously. When I do not understand the material being taught to me, I always ask Dr. Theobold or one of my peers rather than keeping to myself. My continued dedication to this course has led me towards proficiency in most of the learning targets. Since I have spent a lot of time wrestling with the concepts, I have developed a solid understanding of what was taught. While I am not perfect and will continue to grow, I believe my mastery of most of the learning targets and my continued effort to comprehend the material has earned me an A- in STAT 331.

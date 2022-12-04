@@ -1,6 +1,6 @@
 ---
 title: "Lightening Round Essays"
-format: html
+format: docx
 editor: visual
 ---
 
